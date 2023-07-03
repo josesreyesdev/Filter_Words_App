@@ -9,7 +9,7 @@ import com.example.filterwords.databinding.ActivityDetailBinding
 
 class DetailActivity : AppCompatActivity() {
 
-    //Patron singleton
+    //Patron singleton = solo habrá una unica instancia de objeto complementario
     companion object {
         const val LETTER = "letter"
         const val SEARCH_PREFIX = "https://www.google.com/search?q="
@@ -21,11 +21,13 @@ class DetailActivity : AppCompatActivity() {
         val binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //recuperando la letra desde cualquier activity
         val letterId = intent?.extras?.getString(LETTER).toString()
 
         val recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = WordAdapter(this, letterId)
+        recyclerView.adapter = WordAdapter(this, letterId) /* cyclerView.adapter =
+        intent?.extras?.getString(LETTER).toString().let { WordAdapter(this, it) } */
 
         recyclerView.addItemDecoration(
             DividerItemDecoration( this, DividerItemDecoration.VERTICAL)

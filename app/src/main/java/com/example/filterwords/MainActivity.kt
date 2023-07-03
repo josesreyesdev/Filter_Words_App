@@ -23,8 +23,6 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView = binding.recyclerView
         chooseLayout()
-
-
     }
 
     private fun chooseLayout() { //escogerLayout
@@ -39,6 +37,7 @@ class MainActivity : AppCompatActivity() {
     private fun setIcon(menuItem: MenuItem?) {
         if (menuItem == null)
             return
+
         menuItem.icon = if (isLinearLayoutManager)
             ContextCompat.getDrawable( this, R.drawable.ic_grid_layout)
         else ContextCompat.getDrawable( this, R.drawable.ic_linear_layout)
