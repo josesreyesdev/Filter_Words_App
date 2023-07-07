@@ -2,7 +2,7 @@ package com.example.filterwords.data
 
 class Datasource {
 
-    fun loadListOfLetters () = listOfNotNull (
+    fun loadListOfLetters() = listOfNotNull (
         "about",
         "acidic",
         "acne",

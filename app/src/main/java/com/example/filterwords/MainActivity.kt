@@ -26,11 +26,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun chooseLayout() { //escogerLayout
-        if (isLinearLayoutManager) {
-            recyclerView.layoutManager = LinearLayoutManager(this)
-        } else {
-            recyclerView.layoutManager = GridLayoutManager(this, 4)
-        }
+        recyclerView.layoutManager =
+            if (isLinearLayoutManager) LinearLayoutManager(this)
+            else GridLayoutManager(this, 4)
+
         recyclerView.adapter = LetterAdapter()
     }
 
@@ -38,9 +37,10 @@ class MainActivity : AppCompatActivity() {
         if (menuItem == null)
             return
 
-        menuItem.icon = if (isLinearLayoutManager)
-            ContextCompat.getDrawable( this, R.drawable.ic_grid_layout)
-        else ContextCompat.getDrawable( this, R.drawable.ic_linear_layout)
+        val icon = if (isLinearLayoutManager) R.drawable.ic_grid_layout
+            else R.drawable.ic_linear_layout
+
+        menuItem.icon = ContextCompat.getDrawable(this, icon)
     }
 
     //Aumento el menu de opciones y realizar cualquier configuracion adicional
@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    //Llama cuando se seleccione el botón
+    //Llama chooseLayout() cuando se seleccione el botón
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_switch_layout -> {
@@ -61,7 +61,8 @@ class MainActivity : AppCompatActivity() {
                 chooseLayout()
                 setIcon(item)
                 return true
-            } else -> super.onOptionsItemSelected(item)
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

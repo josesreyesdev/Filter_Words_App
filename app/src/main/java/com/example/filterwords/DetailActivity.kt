@@ -26,8 +26,8 @@ class DetailActivity : AppCompatActivity() {
 
         val recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = WordAdapter(this, letterId) /* cyclerView.adapter =
-        intent?.extras?.getString(LETTER).toString().let { WordAdapter(this, it) } */
+        recyclerView.adapter = WordAdapter(this, letterId)
+        /* recyclerView.adapter = intent?.extras?.getString(LETTER).toString().let { WordAdapter(this, it) } */
 
         recyclerView.addItemDecoration(
             DividerItemDecoration( this, DividerItemDecoration.VERTICAL)
