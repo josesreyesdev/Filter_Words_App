@@ -2,6 +2,7 @@ package com.example.filterwords
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.core.content.ContextCompat
@@ -11,12 +12,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.filterwords.adapter.LetterAdapter
 import com.example.filterwords.databinding.ActivityMainBinding
 
+const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private var isLinearLayoutManager = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d(TAG, "onCreate called")
 
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -64,5 +67,37 @@ class MainActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    /* Examples of lifecycle */
+
+    override fun onStart() {
+        super.onStart()
+        Log.d(TAG, "onStart called!")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "onResume Called")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(TAG, "onPause Called")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG, "onStop Called")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "onDestroy Called")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d(TAG, "onRestart Called")
     }
 }
